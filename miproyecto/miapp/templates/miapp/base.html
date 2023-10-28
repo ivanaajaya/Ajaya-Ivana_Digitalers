@@ -1,0 +1,124 @@
+{% comment %} Esta es la base de todas las pag, sesiones {% endcomment %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    {% comment %} basic {% endcomment %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} mobile metas {% endcomment %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    {% comment %} site metas {% endcomment %}
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% comment %} bootstrap css {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="../../static/miapp/css/bootstrap.min.css">
+    {% comment %} style css {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="../../static/miapp/css/style.css">
+    {% comment %} Responsive {% endcomment %}
+    <link rel="stylesheet" href="../../static/miapp/css/responsive.css">
+    {% comment %} fevicon {% endcomment %}
+    <link rel="icon" href="../../static/miapp/images/fevicon.png" type="image/gif" />
+    {% comment %} Scrollbar Custom CSS {% endcomment %}
+    <link rel="stylesheet" href="../../static/miapp/css/jquery.mCustomScrollbar.min.css">
+    {% comment %} Tweaks for older IEs {% endcomment %}
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    {% comment %} owl stylesheets {% endcomment %}
+    <link rel="stylesheet" href="../../static/miapp/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../static/miapp/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+<body>
+      {% comment %} <!-- Navegación --> {% endcomment %}
+      <div class="header_section">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="logo"><a href="{% url 'home' %}"><img src="../../static/miapp/images/logo.png">LT</a></div>
+            </div>
+            <div class="col-md-9">
+              <div class="menu_text">
+                <ul>
+                  <div class="togle_3">
+                    <div class="menu_main">
+                      <div class="padding_left0"><a href="#">Registro</a>
+                        <span class="padding_left0"><a href="#">Acceder</a></span>
+                      </div>
+                    </div>
+                    <div class="shoping_bag"><img src="../../static/miapp/images/search-icon.png"></div>
+                  </div>
+                  <div id="myNav" class="overlay">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <div class="overlay-content">
+                      <a href="index.html">Inicio</a>
+                      <a href="services.html">Servicios</a>
+                      <a href="about.html">Acerca de mi</a>
+                      {% comment %} <a href="choose.html">Choose</a> {% endcomment %}
+                      <a href="team.html">Equipo</a>
+                      <a href="perfil.html">Perfil</a>
+                    </div>
+                  </div>
+                  <span class="navbar-toggler-icon"></span>
+                  <span onclick="openNav()"><img src="../../static/miapp/images/toggle-icon.png" class="toggle_menu"></span>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% block content %} {% endblock %}
+  {% comment %} banner section end {% endcomment %}
+  </div>
+  
+    <footer>        
+        {% block footer %}
+            <!-- copyright section start -->
+            <div class="copyright_section">
+              <div class="container">
+                <p class="copyright_text">&copy; Mi Aplicacion Django [2023] by Ivana Yamila Belén Ajaya</p>
+              </div>
+            </div>
+  <!-- copyright section end -->
+        {% endblock footer %}            
+    </footer>
+
+    {% comment %} Javascript files {% endcomment %}
+    <script src="../../static/miapp/js/jquery.min.js"></script>
+    <script src="../../static/miapp/js/popper.min.js"></script>
+    <script src="../../static/miapp/js/bootstrap.bundle.min.js"></script>
+    <script src="../../static/miapp/js/jquery-3.0.0.min.js"></script>
+    <script src="../../static/miapp/js/plugin.js"></script>
+    {% comment %} sidebar {% endcomment %}
+    <script src="../../static/miapp/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../../static/miapp/js/custom.js"></script>
+    {% comment %} javascript {% endcomment %}
+    <script src="../../static/miapp/js/owl.carousel.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".fancybox").fancybox({
+          openEffect: "none",
+          closeEffect: "none"
+        });
+
+        $(".zoom").hover(function () {
+
+          $(this).addClass('transition');
+        }, function () {
+
+          $(this).removeClass('transition');
+        });
+      });
+    </script>
+    <script>
+      function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+      }
+      function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+      }
+    </script>
+</body>
+</html>

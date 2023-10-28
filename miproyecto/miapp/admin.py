@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Usuario, Empleado, Cliente, Reserva
+from .models import Usuario, Empleado, Cliente, Reserva, TipoServicio
 
 # Register your models here.
 class UsuarioAdmin(admin.ModelAdmin):
@@ -14,7 +14,11 @@ class ClienteAdmin(admin.ModelAdmin):
 class ReservaAdmin(admin.ModelAdmin):
     pass
 
+class TipoServicioAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Usuario, UsuarioAdmin)
 admin.site.register(Empleado, EmpleadoAdmin)
 admin.site.register(Cliente, ClienteAdmin)
+admin.site.register(TipoServicio, TipoServicioAdmin)
 admin.site.register(Reserva, ReservaAdmin)
