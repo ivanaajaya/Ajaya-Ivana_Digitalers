@@ -1,27 +1,39 @@
 {% extends 'miapp/base.html' %}
+{% load static %}
 {% block title %}
   Inicio
 {% endblock %}
 {% block content %}
   <!-- banner section start -->
-  <div class="banner_section layout_padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-5">
-          <h1 class="banner_taital">Best YOUR</h1>
-          <h1 class="banner_taital_1">house CLEAN</h1>
-          <p class="banner_text">Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim</p>
-          <div class="contact_bt"><a href="contact.html">CONTACT US<span class="contact_padding"><img
-                  src="../../static/miapp/images/contact-icon.png"></span></a></div>
-        </div>
-        <div class="col-sm-2">
-          <div class="play_icon"><a href="#"><img src="../../static/miapp/images/play-icon.png"></a></div>
-        </div>
-        <div class="col-sm-5">
-          <div><img src="../../static/miapp/images/img-1.png" class="image_1"></div>
+  <main>
+    <div class="about_section layout_padding">
+      <div class="container">
+        <h1 class="choose_taital"><span>Limpieza de </span> <img src="{% static 'miapp/images/icon-1.png' %}"> <span style="color: #1f1f1f">
+          Tapizados</span></h1>
+        <div class="row">
+          <div class="col-md-6">
+            <div><img src="{% static 'miapp/images/img-2.png' %}" class="image_2"></div>
+          </div>
+          <div class="col-md-6">
+            
+            {% comment %} <h1 class="services_taital"><span>Limpieza de </span> <img src="../../static/miapp/images/icon-1.png"> <span
+                style="color: #1f1f1f">Tapizados</span></h1> {% endcomment %}
+            <p class="ipsum_text">En <strong>Nombre de Tu Empresa</strong>, estamos comprometidos a 
+              brindarte un servicio de limpieza de tapizados excepcional. 
+              Nuestra plataforma está diseñada para hacer que la gestión de tus servicios 
+              y la reserva de limpieza de tapizados sea más fácil y conveniente que nunca.
+              <br>
+              <strong>Nuestros Servicios: </strong><br>
+              Ofrecemos una amplia gama de servicios de limpieza de tapizados para satisfacer 
+              tus necesidades específicas. Desde la limpieza de sofás y sillas 
+              hasta la restauración de alfombras y cortinas, 
+              estamos aquí para hacer que tus espacios luzcan como nuevos.
+            </p>
+            <div class="contact_bt_1"><a href="#">Mira nuestros servicios<span class="contact_padding"><img
+                    src="{% static 'miapp/images/contact-icon1.png' %}"></span></a></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+</main>
 {% endblock %}

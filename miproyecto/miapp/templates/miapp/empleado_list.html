@@ -1,0 +1,47 @@
+{% extends 'miapp/base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ titulo }}
+{% endblock title %}
+
+{% block content %} 
+  <main>
+    <div class="about_section layout_padding">
+      <div class="container">
+        <h1 class="choose_taital"><span>Lista de </span> <img src="{% static 'miapp/images/icon-1.png' %}"> <span style="color: #1f1f1f">
+          Nuestro Equipo</span></h1>
+        {% if empleado_list %}
+            <div>
+            {% for empleado in empleado_list %}
+                <div>
+                  <h5>{{ empleado.nombreEmpleado }}, {{ empleado.apellidoEmpleado }}</h5>
+                  <div>
+                    <div>
+                      {% if empleado.estadoEmpleo == "activo" %}
+                        <span>Horario de trabajo: {{empleado.horarioTrabajo}}</span>
+                      {% else %}
+                        <span>No disponible</span>
+                      {% endif  %}                         
+                    </div>
+                  </div>           
+                </div>
+                <br>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div>
+            <img src="{% static 'miapp/images/lista.avif' %}" >
+            <div>
+              <h5 >Equipo</h5>
+              <p>Sin Empleados ingresados en la Base de Datos del sitio, 
+                por favor regrese en breve estaremos cargando nuestro Team</p>
+              <a href="{% url 'home' %}" >Inicio</a>
+            </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </main>
+
+{% endblock content%}

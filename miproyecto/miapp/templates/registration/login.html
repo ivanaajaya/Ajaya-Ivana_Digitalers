@@ -1,0 +1,28 @@
+{% extends 'miapp/base.html' %}
+
+{% load static %} 
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <main role="main">
+    <div class="about_section layout_padding">
+      <div class="padding_left0">
+        <form class="text-center" method="post" novalidate>
+          {% csrf_token %}
+          <h2 class="choose_taital">Ingrese a su cuenta</h2>
+          {% for field in form %}
+                {{ field.label_tag }} 
+                {{ field }}
+                <br>
+                {% if field.errors %}
+                  <small>{{ field.errors|striptags }}</small> 
+                {% endif %}
+          {% endfor %}
+          <br>
+          <input type="submit" value="Acceder" class="btn btn-primary full-width">
+        </form>
+      </div>
+    </div>
+  </main>
+{% endblock content %}
+

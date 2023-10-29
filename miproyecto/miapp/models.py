@@ -6,6 +6,7 @@ from django.contrib import admin
 class Usuario(models.Model):
     """maneja la autenticación y el rol de los usuarios"""
     usuario = models.CharField(max_length=100)
+    # usuario = models.CharField(max_length=100)
     correoElectronico = models.EmailField(unique=True)
     contrasena = models.CharField(max_length=128)  # Aquí deberías almacenar el hash de la contraseña
     fotoPerfil = models.ImageField(upload_to="perfiles/", null=True, blank=True)
@@ -24,7 +25,8 @@ class Usuario(models.Model):
 # Modelo para Empleados
 class Empleado(models.Model):
     """almacenan información adicional sobre empleados"""
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario_perfil = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+    # usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     nombreEmpleado = models.CharField(max_length=100)
     apellidoEmpleado = models.CharField(max_length=100)
     numeroTelefono = models.CharField(max_length=15)
@@ -44,7 +46,8 @@ class Empleado(models.Model):
 # Modelo para Clientes
 class Cliente(models.Model):
     """almacenan información adicional sobre clientes"""
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario_perfil = models.OneToOneField(Usuario, on_delete=models.CASCADE)
+    # usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     nombreCliente = models.CharField(max_length=100)
     apellidoCliente = models.CharField(max_length=100)
     direccion = models.CharField(max_length=200)
@@ -63,8 +66,9 @@ class Cliente(models.Model):
 class TipoServicio(models.Model):
     nombreServicio = models.CharField(max_length=100)
     descripcion = models.TextField()
-    imagen = models.ImageField(upload_to="tipos_de_servicio/", null=True, blank=True)
+    imagen = models.ImageField(upload_to="tipos_de_servicio/", null=True, blank=True, verbose_name="Cover")
     duracionEstimada = models.DurationField()
+    costoEstimado = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
         return self.nombreServicio
@@ -85,7 +89,7 @@ class Reserva(models.Model):
         ('cancelada', 'Cancelada'),
     )
     estadoReserva = models.CharField(max_length=20, choices=ESTADO_RESERVA_CHOICES)
-    costoEstimado = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    
     # numeroConfirmacion = models.CharField(max_length=20, unique=True, null=True, blank=True)
 
     def __str__(self):
