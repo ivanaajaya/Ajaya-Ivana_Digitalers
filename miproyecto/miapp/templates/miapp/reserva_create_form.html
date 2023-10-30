@@ -1,0 +1,21 @@
+{% extends 'miapp/base.html' %}
+{% load static %}
+
+{% block title %} Crear Nueva Reserva
+{% endblock title %}
+
+{% block content %} 
+  <main>
+    <div class="about_section layout_padding">
+      <div class="container">
+        <h1 class="choose_taital"><span>Crear Nueva </span> <img src="{% static 'miapp/images/icon-1.png' %}"> <span style="color: #1f1f1f">
+            Reserva</span></h1>
+          <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+            {{ form.as_p }}              
+            <input type="submit" class="btn btn-primary" value="Guardar Reserva" />                
+          </form>
+      </div>
+    </div>
+  </main> 
+
+{% endblock content%}

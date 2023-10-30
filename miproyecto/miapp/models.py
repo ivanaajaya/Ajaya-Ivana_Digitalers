@@ -1,36 +1,18 @@
 from django.db import models
 from django.contrib import admin
-
-
-# Modelo para Usuarios
-class Usuario(models.Model):
-    """maneja la autenticación y el rol de los usuarios"""
-    usuario = models.CharField(max_length=100)
-    # usuario = models.CharField(max_length=100)
-    correoElectronico = models.EmailField(unique=True)
-    contrasena = models.CharField(max_length=128)  # Aquí deberías almacenar el hash de la contraseña
-    fotoPerfil = models.ImageField(upload_to="perfiles/", null=True, blank=True)
-    fechaCreacion = models.DateTimeField(auto_now_add=True)
-    ultimoIngreso = models.DateTimeField(auto_now=True)
-    ROLES = (
-        ('administrador', 'Administrador'),
-        ('empleado', 'Empleado'),
-        ('cliente', 'Cliente'),
-    )
-    rol = models.CharField(max_length=20, choices=ROLES)
-    
-    def __str__(self):
-        return self.usuario
+from django.contrib.auth.models import User
+# Si tengo tiempo un modelo para las sucursales, deberia agregarle nuevos atributos a los clientes y empleados.
 
 # Modelo para Empleados
 class Empleado(models.Model):
     """almacenan información adicional sobre empleados"""
-    usuario_perfil = models.OneToOneField(Usuario, on_delete=models.CASCADE)
-    # usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     nombreEmpleado = models.CharField(max_length=100)
     apellidoEmpleado = models.CharField(max_length=100)
-    numeroTelefono = models.CharField(max_length=15)
-    direccion = models.CharField(max_length=200)
+    fotoEmpleado = models.ImageField(upload_to="perfiles/", null=True, blank=True)
+    correoEmpleado = models.EmailField(unique=True)
+    telefonoEmpleado = models.CharField(max_length=15)
+    direccionEmpleado = models.CharField(max_length=200)
     horarioTrabajo = models.CharField(max_length=20) #ejemplo "9:00 AM - 5:00 PM"
     ESTADO_EMPLEO_CHOICES = (
         ('activo', 'Activo'),
@@ -39,6 +21,8 @@ class Empleado(models.Model):
     )
     estadoEmpleo = models.CharField(max_length=10, choices=ESTADO_EMPLEO_CHOICES, default='activo')
     numeroEmpleado = models.CharField(max_length=20, unique=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return f"{self.nombreEmpleado}, {self.apellidoEmpleado}"
@@ -46,12 +30,15 @@ class Empleado(models.Model):
 # Modelo para Clientes
 class Cliente(models.Model):
     """almacenan información adicional sobre clientes"""
-    usuario_perfil = models.OneToOneField(Usuario, on_delete=models.CASCADE)
-    # usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     nombreCliente = models.CharField(max_length=100)
     apellidoCliente = models.CharField(max_length=100)
-    direccion = models.CharField(max_length=200)
-    numeroTelefono = models.CharField(max_length=15)
+    fotoCliente = models.ImageField(upload_to="perfiles/", null=True, blank=True)
+    correoCliente = models.EmailField(unique=True)
+    direccionCliente = models.CharField(max_length=200)
+    telefonoCliente = models.CharField(max_length=15)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     
     # Comentarios = models.TextField()
     
@@ -63,13 +50,15 @@ class Cliente(models.Model):
     def __str__(self):
         return f"{self.nombreCliente}, {self.apellidoCliente}"
 
+# Modelo para Servicios
 class TipoServicio(models.Model):
     nombreServicio = models.CharField(max_length=100)
-    descripcion = models.TextField()
-    imagen = models.ImageField(upload_to="tipos_de_servicio/", null=True, blank=True, verbose_name="Cover")
+    descripcion = models.TextField(verbose_name="description")
+    imagen = models.ImageField(upload_to="tipos_de_servicio/", null=True, blank=True, verbose_name="Imagen")
     duracionEstimada = models.DurationField()
     costoEstimado = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.nombreServicio
 
@@ -89,8 +78,9 @@ class Reserva(models.Model):
         ('cancelada', 'Cancelada'),
     )
     estadoReserva = models.CharField(max_length=20, choices=ESTADO_RESERVA_CHOICES)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     
-    # numeroConfirmacion = models.CharField(max_length=20, unique=True, null=True, blank=True)
 
     def __str__(self):
         return f"Reserva: {self.numeroReserva}, Cliente: {self.cliente}, Empleado: {self.empleado}"

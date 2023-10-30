@@ -1,0 +1,36 @@
+{% extends 'miapp/base.html' %}
+{% load static %}
+
+{% block title %} Nuevo Servicio
+{% endblock title %}
+
+{% block content %} 
+  <main>
+    <div class="about_section layout_padding">
+      <div class="container">
+        {% if 'ok' in request.GET %}
+          <h2>Servicio modificada correctamente
+            <a style="color:green;" href="{% url 'servicios' %}">
+              Haz clic para ver la lista de Servicios con la modificacion
+            </a>
+          </h2>
+        {% endif %}        
+        <form action="" method="post" enctype='multipart/form-data'>{% csrf_token %}
+            {{ form.as_p }}
+
+            {% if servicio.imagen %}                              
+              <img class=""  width="100" height="100" src="{{servicio.imagen.url}}"/>
+            {% else %}
+              <img class=""  width="100" height="100" src="{% static 'miapp/images/img-5.png' %}"> 
+              {% comment %} Comentario: mejorar la imagen {% endcomment %}
+            {% endif  %} 
+
+          <div class="text-center">
+            <input type="submit" class="btn btn-primary btn-block" value="Modificar Película" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </main> 
+
+{% endblock content%}

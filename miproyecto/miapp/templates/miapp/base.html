@@ -31,21 +31,23 @@
     <link rel="stylesheet" href="{% static 'miapp/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'miapp/css/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-</head>
+    {% comment %} ckeditor {% endcomment %}
+    <link href="{% static 'miapp/css/custom_ckeditor.css' %}" rel="stylesheet">
+  </head>
 <body>
       {% comment %} Navegación {% endcomment %}
       <div class="header_section background_bg">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-3">
-              <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'miapp/images/logo.png' %}"></a></div>
+              <div class="logo"><a href="{% url 'home' %}"><img width="200" height="100" src="{% static 'miapp/images/logo2-r.png' %}"></a></div>
             </div>
             <div class="col-md-9">
               <div class="menu_text">
                 <ul>
                   <div class="togle_3">
                     <div class="menu_main">
-                      <div class="padding_left0"><a href="#">Registro</a>
+                      <div class="padding_left0"><a href="{% url 'registro' %}">Registro</a>
                         {% comment %} <span class="padding_left0"><a href="#">Acceder</a></span> {% endcomment %}
                         <span class="padding_left0">
                             {% if request.user.is_authenticated %}
@@ -66,10 +68,10 @@
                     <div class="overlay-content">
                       <a href="{% url 'home' %}">Inicio</a>
                       <a href="{% url 'servicios' %}">Servicios</a>
-                      <a href="#">Acerca de mi</a>
-                      {% comment %} <a href="choose.html">Choose</a> {% endcomment %}
                       <a href="{% url 'empleados' %}">Equipo</a>
-                      <a href="#">Perfil</a>
+                      <a href="{% url 'perfil' %}">Tu Perfil</a>
+                      <a href="{% url 'reservas_list' %}">Tus reservas</a>
+                      <a style="color:green;" href="#">Acerca de mi</a>
                     </div>
                   </div>
                   <span class="navbar-toggler-icon"></span>
@@ -107,7 +109,9 @@
     {% comment %} javascript {% endcomment %}
     <script src="{% static 'miapp/js/owl.carousel.js' %}"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js' %}"></script>
-    
+    {% comment %} ckeditor {% endcomment %}
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
 
     <script>
       $(document).ready(function () {

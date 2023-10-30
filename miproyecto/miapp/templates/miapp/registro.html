@@ -1,0 +1,24 @@
+{% extends 'miapp/base.html' %}
+{% load static %}
+
+{%block title %}Registro{% endblock %}
+
+{%block content %}
+  <main role="main">
+    <div class="about_section layout_padding">
+      <div class="container">
+        <div class="padding_left0">
+          {% if not request.user.is_authenticated %}
+            <form class="padding_left0" action="" method="post" enctype='multipart/form-data'>{% csrf_token %}
+              <h2 class="choose_taital">Registro</h2>
+              {{ form.as_p }}
+              <input type="submit" class="btn btn-primary" value="Enviar" />
+            </form>
+          {% else %}
+            <p>Ya has iniciado sesión. No puedes registrarte nuevamente.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </main>
+{%endblock%}

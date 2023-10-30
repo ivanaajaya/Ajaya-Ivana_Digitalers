@@ -1,0 +1,16 @@
+{% extends 'miapp/base.html' %}
+
+{% load static %}
+{%block title %}Eliminar Servicio{% endblock %}
+{%block content %}
+<main role="main">
+  <div class="about_section layout_padding">
+    <div class="container">
+      <form method="post">{% csrf_token %}
+        <p style="color:red;">Esta seguro que quiere eliminar el Servicio "{{ object }}"?</p>
+        <input type="submit" class="btn btn-primary btn-block" value="Confirmar">
+      </form>
+    </div>
+  </div>
+</main>
+{%endblock%}

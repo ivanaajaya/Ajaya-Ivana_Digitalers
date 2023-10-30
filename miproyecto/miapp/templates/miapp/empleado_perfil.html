@@ -1,0 +1,37 @@
+{% extends 'miapp/base.html' %}
+{% load static %}
+
+{% block title %}Perfil Empleado{% endblock %}
+
+{% block content %}
+  <main role="main">
+    <div class="about_section layout_padding">
+      <div class="container">
+        <h2 class="choose_taital">Perfil Empleado: {{ perfil.usuario.username }} 
+            {% if perfil.fotoEmpleado %}                              
+              <img width="100" height="100" src="{{perfil.fotoEmpleado.url}}" alt="{{perfil.fotoEmpleado.url}}"/>
+            {% else %}
+              <img width="100" height="100" src="{% static 'miapp/images/imagen.png' %}">
+            {% endif  %}
+        </h2>
+
+        <div class="profile-info">
+          <h3>Información del Empleado <a href="{% url 'editar_perfil' %}">---------------------> [[Editar]]<---------------------</a></h3>
+            
+          <p><strong>Nombre:</strong> {{ perfil.nombreEmpleado }} {{ perfil.apellidoEmpleado }}</p>
+          <p><strong>Correo Electrónico:</strong> {{ perfil.correoEmpleado }}</p>
+          <p><strong>Teléfono:</strong> {{ perfil.telefonoEmpleado }}</p>
+          <p><strong>Dirección:</strong> {{ perfil.direccionEmpleado }}</p>
+          <p><strong>Horario de Trabajo:</strong> {{ perfil.horarioTrabajo }}</p>
+          <p><strong>Estado de Empleo:</strong> {{ perfil.estadoEmpleo }}</p>
+        </div>
+        <div class="user-info">
+          <h3>Información del Usuario <a href="{% url 'editar_usuario' %}">---------------------> [[Editar Usuario o Contraseña]]<---------------------</a></h3>
+          <p><strong>Nombre de Usuario:</strong> {{ perfil.usuario.username }}</p>
+          <p><strong>Correo Electrónico del Usuario:</strong> {{ perfil.usuario.email }}</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+{% endblock %}

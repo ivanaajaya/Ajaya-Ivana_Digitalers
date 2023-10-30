@@ -1,0 +1,20 @@
+{% extends 'miapp/base.html' %}
+
+{% block title %}Editar Perfil{% endblock %}
+
+{% block content %}
+<main role="main">
+  <div class="about_section layout_padding">
+    <div class="container">
+      <form method="post" enctype="multipart/form-data">
+        <h2 class="choose_title">Editar Perfil del Usuario:</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

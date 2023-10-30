@@ -11,20 +11,43 @@
       <div class="container">
         <h1 class="choose_taital"><span>Lista de </span> <img src="{% static 'miapp/images/icon-1.png' %}"> <span style="color: #1f1f1f">
           Servicios</span></h1>
+        {% if user.is_authenticated and user.empleado %}
+          <div>
+            <h2>
+              <a style="color:green;" href="{% url 'nuevo-servicio' %}">Agregar un Nuevo Servicio</a>
+            </h2>
+          </div>
+          <br>
+        {% endif %}
         {% if tiposervicio_list %}
             <div>
             {% for servicio in tiposervicio_list %}
                 <div>
-                  <h5>{{ servicio.nombreServicio }}</h5>
+                  <h2>{{ servicio.nombreServicio }}</h2>
                   <div>
-                    <div>
+                    <div style="display: flex;">
                       {% if servicio.imagen %}
-                        <img class=""  width="164" height="96" src="{{servicio.imagen.url}}" alt="{{servicio.imagen.url}}"/>
+                        <img class=""  width="200" height="200" src="{{servicio.imagen.url}}" alt="{{servicio.imagen.url}}"/>
                       {% else %}
-                        <img class="r"  width="164" height="96" src="{% static 'miapp/images/img-5.png' %}">
+                        <img class="r"  width="200" height="200" src="{% static 'miapp/images/img-5.png' %}">
                       {% endif  %}                         
                         <div><span>{{servicio.descripcion|safe}}</span></div>
                     </div>
+                    {% if user.is_authenticated and user.empleado %}
+                      <div>
+                          <a href="{% url 'actualizar-servicio' servicio.id %}" class="btn btn-sm btn-primary">Editar</a>
+                          <a href="{% url 'eliminar-servicio' servicio.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                          <p>Solo un cliente puede reservar un turno</p>
+                      </div>
+                    {% endif %}
+                    {% if user.is_authenticated and user.cliente %}
+                      <div>
+                        <h2>
+                          <a href="{% url 'nueva-reserva' servicio.id%}" class="btn btn-sm btn-primary">Reserva un Turno</a>
+                        </h2>
+                      </div>
+                      <br>
+                    {% endif %}
                   </div>           
                 </div>
                 <br>
@@ -34,9 +57,10 @@
         <div>
             <img src="{% static 'miapp/images/img-5.png' %}" >
             <div>
-              <h5 >Servicio</h5>
+              <h2 >Servicio
               <p>Sin sevicios ingresadas en la Base de Datos del sitio, por favor regrese en breve estaremos cargando nuestro stock</p>
               <a href="{% url 'home' %}" >Inicio</a>
+              </h2>
             </div>
         </div>
         {% endif %}
