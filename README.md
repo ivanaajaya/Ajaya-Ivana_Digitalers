@@ -48,8 +48,9 @@ Este sistema web desarrollado con Python y Django permite la gestión eficiente 
 
 Para inicializar el proyecto:
 
-1. Activa el entorno virtual:
-
+1. Activa el entorno virtual: .\.venv\Scripts\activate 
+2. cd .\miproyecto\
+3. python manage.py runserver
 
 ## Credenciales de Acceso
 ### Superusuario
