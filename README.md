@@ -78,3 +78,5 @@ Para inicializar el proyecto:
 - Profesores: Jorge Ángel Páez y Norman Beltrán.
 
 ## Este proyecto fue desarrollado como parte del curso de Digit@lers Python Developer de Telecom Digital.
+
+- Template:Free html Templates,Distributed by "https://themewagon.com" ThemeWagon
