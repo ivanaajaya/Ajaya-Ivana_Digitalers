@@ -1,0 +1,26 @@
+{% extends 'miapp/base.html' %}
+{% load static %}
+
+{% block title %}
+  Reserva de Servicio
+{% endblock title %}
+
+{% block content %}
+<main role="main">
+  <div class="about_section layout_padding">
+    <div class="container">
+      <h1 class="choose_taital"><span>Reservar </span> <img src="{% static 'miapp/images/icon-1.png' %}"> <span style="color: #1f1f1f">
+        {{ servicio.nombreServicio }}</span></h1>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Reservar</button>
+      </form>
+      <br>
+      <div>
+      <a href="{% url 'servicios' %} "class="btn btn-primary">Volver a la lista de servicios</a>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}

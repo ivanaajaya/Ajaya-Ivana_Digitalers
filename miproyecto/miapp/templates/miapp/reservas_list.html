@@ -9,47 +9,47 @@
   <main>
     <div class="about_section layout_padding">
       <div class="container">
-        <h1 class="choose_taital"><span>Lista de </span> <img src="{% static 'miapp/images/icon-1.png' %}"> <span style="color: #1f1f1f">
-          Reservas</span></h1>
-        <div>
-        {% if user.is_authenticated and user.empleado or user.cliente%}
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Número de Reserva</th>
-                  <th>Cliente</th>
-                  <th>Empleado</th>
-                  <th>Fecha y Hora</th>
-                  <th>Dirección del Cliente</th>
-                  <th>Tipo de Servicio</th>
-                  <th>Creacion</th>
-                  <th>Ultima modificacion</th>
-                  <th>Estado de la Reserva</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for reserva in reservas %}
+          <h1 class="choose_taital"><span>Lista de </span> <img src="{% static 'miapp/images/icon-1.png' %}"> <span style="color: #1f1f1f">
+            Reservas</span></h1>
+          <div>
+            {% if user.is_authenticated and user.empleado or user.cliente%}
+              <table class="table table-striped">
+                <thead>
                   <tr>
-                    <td>{{ reserva.numeroReserva }}</td>
-                    <td>{{ reserva.cliente }}</td>
-                    <td>{{ reserva.empleado }}</td>
-                    <td>{{ reserva.fechaHora }}</td>
-                    <td>{{ reserva.direccionCliente }}</td>
-                    <td>{{ reserva.tipoServicio.nombreServicio }}</td>
-                    <td>{{ reserva.created }}</td>
-                    <td>{{ reserva.updated }}</td>
-                    <td>{{ reserva.estadoReserva }}</td>
-                    <td>
-                      <a href="{% url 'actualizar-reserva' reserva.numeroReserva %}" class="btn btn-sm btn-primary">Editar</a>
-                    </td>
+                    <th>Número de Reserva</th>
+                    <th>Cliente</th>
+                    <th>Empleado</th>
+                    <th>Fecha y Hora</th>
+                    <th>Dirección del Cliente</th>
+                    <th>Tipo de Servicio</th>
+                    <th>Creacion</th>
+                    <th>Ultima modificacion</th>
+                    <th>Estado de la Reserva</th>
                   </tr>
-                {% endfor %}
-              </tbody>
-            </table> 
-            {% else %}
-            <p>Debes iniciar sesión para ver esta página.</p>
-            {% endif %}
-        </div>
+                </thead>
+                <tbody>
+                  {% for reserva in reservas %}
+                    <tr>
+                      <td>{{ reserva.numeroReserva }}</td>
+                      <td>{{ reserva.cliente }}</td>
+                      <td>{{ reserva.empleado }}</td>
+                      <td>{{ reserva.fechaHora }}</td>
+                      <td>{{ reserva.direccionCliente }}</td>
+                      <td>{{ reserva.tipoServicio.nombreServicio }}</td>
+                      <td>{{ reserva.created }}</td>
+                      <td>{{ reserva.updated }}</td>
+                      <td>{{ reserva.estadoReserva }}</td>
+                      <td>
+                        <a href="{% url 'actualizar-reserva' reserva.numeroReserva %}" class="btn btn-sm btn-primary">Editar</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table> 
+              {% else %}
+              <p>Debes iniciar sesión para ver esta página.</p>
+              {% endif %}
+          </div>
       </div>
     </div>
   </main>

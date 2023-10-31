@@ -1,28 +1,80 @@
-# Ajaya-Ivana_Digitalers
-## Nombre del Proyecto: Plataforma de Gestión de Servicios de Limpieza de Tapizados
+# Sistema de Gestión de Clientes y Empleados para Limpieza de Tapizados
 
-## Descripción
-Desarrolla una aplicación web que capacite a una empresa de limpieza de tapizados para administrar de manera eficiente sus recursos humanos, clientes y la programación de servicios. La aplicación incluirá un sistema de autenticación que permitirá a administradores, empleados y clientes acceder a funciones específicas. Los clientes podrán reservar servicios de limpieza de tapizados, y los administradores tendrán la capacidad de gestionar y confirmar estas reservas.
+Este sistema web desarrollado con Python y Django permite la gestión eficiente de clientes y empleados para un servicio de limpieza de tapizados. Ofrece diferentes funcionalidades para los roles de clientes y empleados, y está diseñado para facilitar la administración de reservas de servicios.
 
-## Funcionalidades Específicas
+## Características Principales
 
-### Autenticación
-- Implementa un sistema de autenticación que permita el registro, inicio de sesión y cierre de sesión para tres roles distintos: administradores, empleados y clientes.
+### Para Clientes
+- Registro de nuevos clientes.
+- Inicio de sesión seguro.
+- Reserva y modificación de turnos de servicio.
+- Visualización de perfiles de clientes.
+- Edición de información de perfil.
+- Exploración de servicios disponibles.
+- Consulta de historial de reservas.
+- Exploración del equipo de trabajo.
+- Búsqueda de tipos de servicios.
 
-### Gestión de Empleados
-- Los administradores podrán agregar, ver, editar y eliminar empleados y clientes. Además, contarán con una función de búsqueda para acceder a la información de todos los empleados y clientes.
-- Los empleados podrán acceder para ver y editar su propio perfil.
+### Para Empleados
+- Registro de nuevos empleados.
+- Inicio de sesión seguro.
+- Visualización y edición de información de perfil.
+- Creación, edición, eliminación de tipos de servicio de limpieza.
+- Visualización de perfiles de todos los empleados.
+- Gestión de reservas asignadas.
+- Búsqueda de tipos de servicios.
 
-### Gestión de Clientes
-- Los clientes podrán acceder para ver y editar su propio perfil.
+### Superusuario
+- Acceso total a todas las funciones y datos a través del panel de administrador de Django.
 
-### Reservas de Servicios
-- Las reservas de servicios incluirán detalles como la fecha y hora, la dirección del cliente y cualquier comentario adicional.
-- Los administradores podrán agregar, ver, editar y eliminar estas reservas.
-- Los empleados podrán ver las reservas de servicios asignadas específicamente a ellos, lo que les permitirá conocer sus tareas programadas. Sin embargo, no podrán crear ni gestionar nuevas reservas.
-- Los clientes podrán reservar servicios de limpieza de tapizados.
+## Requisitos
+- Python
+- asgiref==3.7.2
+- certifi==2023.7.22
+- charset-normalizer==3.3.1
+- Django==4.2.6
+- django-ckeditor==6.7.0
+- django-js-asset==2.1.0
+- idna==3.4
+- Pillow==10.1.0
+- requests==2.31.0
+- sqlparse==0.4.4
+- tzdata==2023.3
+- urllib3==2.0.7
 
-### Información Personal
-- Los administradores tendrán control total sobre la gestión de las reservas de servicios, mientras que los empleados podrán acceder y visualizar las reservas asignadas para realizar el servicio de limpieza de tapizados.
+- Otros requisitos (ver `requirements.txt`).
 
-Esta aplicación proporcionará una plataforma eficiente para la administración y programación de servicios de limpieza de tapizados, mejorando la eficiencia y la satisfacción tanto de la empresa como de sus clientes.
+## Inicialización del Proyecto
+
+Para inicializar el proyecto:
+
+1. Activa el entorno virtual:
+
+
+## Credenciales de Acceso
+### Superusuario
+- Usuario: admin
+- Contraseña: admin
+
+### Para Clientes
+- Usuario: usuario1
+- Contraseña: cliente12345
+
+### Para Empleados
+- Usuario: usuario2
+- Contraseña: empleado
+
+## Ragistro
+### Para Registrate como Empleado
+- Palabra clava = clave 
+
+### Para Registrate como Cliente
+- No ingrese ninguna palabra solo vacio = ''
+
+## Autor
+- Ivana Yamila Belén Ajaya
+
+## Agradecimientos
+- Profesores: Jorge Ángel Páez y Norman Beltrán.
+
+## Este proyecto fue desarrollado como parte del curso de Digit@lers Python Developer de Telecom Digital.

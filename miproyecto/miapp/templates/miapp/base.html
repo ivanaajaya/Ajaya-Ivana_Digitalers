@@ -61,7 +61,7 @@
                         </span>
                       </div>
                     </div>
-                    <div class="shoping_bag"><img src="{% static 'miapp/images/search-icon.png' %}"></div>
+                    {% comment %} <div class="shoping_bag"><img src="{% static 'miapp/images/search-icon.png' %}"></div> {% endcomment %}
                   </div>
                   <div id="myNav" class="overlay">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -69,9 +69,18 @@
                       <a href="{% url 'home' %}">Inicio</a>
                       <a href="{% url 'servicios' %}">Servicios</a>
                       <a href="{% url 'empleados' %}">Equipo</a>
-                      <a href="{% url 'perfil' %}">Tu Perfil</a>
+                      
+                      <a style="color:green;" href="{% url 'ivanaA' %}">Acerca de mi</a>
+                      {% if user.is_authenticated%}
                       <a href="{% url 'reservas_list' %}">Tus reservas</a>
-                      <a style="color:green;" href="#">Acerca de mi</a>
+                      {% else %}
+                      <p>Debes iniciar sesión para ver [Tu reservas]</p>
+                      {% endif %}
+                      {% if user.is_authenticated%}
+                        <a href="{% url 'perfil' %}">Tu Perfil</a>
+                      {% else %}
+                      <p>Debes iniciar sesión para ver [Tu Perfil]</p>
+                      {% endif %}
                     </div>
                   </div>
                   <span class="navbar-toggler-icon"></span>

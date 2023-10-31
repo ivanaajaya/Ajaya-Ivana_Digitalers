@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib import admin
 from django.contrib.auth.models import User
+
 # Si tengo tiempo un modelo para las sucursales, deberia agregarle nuevos atributos a los clientes y empleados.
+# Si tengo tiempo un modelo Mensaje para que un cliente y un empleado se puedadn comunicar en cada reserva de turno.
+# Si tengo tiempo un modelo de historial de reservas para rastrear las reservas anteriores del cliente.
 
 # Modelo para Empleados
 class Empleado(models.Model):
@@ -39,14 +42,7 @@ class Cliente(models.Model):
     telefonoCliente = models.CharField(max_length=15)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    
-    # Comentarios = models.TextField()
-    
-    # Si tengo tiempo:
-    # un modelo de historial de reservas
-    # para rastrear las reservas anteriores del cliente
-    # HistorialReservas = models.ManyToManyField('Reserva', related_name='reservas_del_cliente')
-    
+
     def __str__(self):
         return f"{self.nombreCliente}, {self.apellidoCliente}"
 
@@ -77,7 +73,7 @@ class Reserva(models.Model):
         ('completada', 'Completada'),
         ('cancelada', 'Cancelada'),
     )
-    estadoReserva = models.CharField(max_length=20, choices=ESTADO_RESERVA_CHOICES)
+    estadoReserva = models.CharField(max_length=20, choices=ESTADO_RESERVA_CHOICES, default='Pendiente')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     

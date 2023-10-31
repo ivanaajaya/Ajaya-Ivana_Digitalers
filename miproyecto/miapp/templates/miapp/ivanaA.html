@@ -1,0 +1,43 @@
+{% extends 'miapp/base.html' %}
+{% load static %}
+{% block title %}
+  Acerca de Mi
+{% endblock %}
+{% block content %}
+  <main>
+    <div class="about_section layout_padding">
+      <div class="container">
+        <div  class="choose_box">
+          <h1 class="choose_taital"><span>Ivana</span><span style="color: #1f1f1f">
+            Ajaya :)</span></h1>
+            <div class="row">
+              <div class="col-sm-5">
+                <div><img src="{% static 'miapp/images/ivana2.png' %}" width="335" height="335" ></div>
+                <h6 class="follow_text">Seguime</h6>
+                <div class="follow_social_icon">
+                  <ul>
+                    <li><a href="https://github.com/ivanaajaya" target="_blank"><img width="35" height="35" src="{% static 'miapp/images/github.png' %}"></a></li>
+                    <li><a href="https://linkedin.com/in/ivana-ajaya" target="_blank"><img width="35" height="35" src="{% static 'miapp/images/linkedin.png' %}"></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-7" >
+                <div>
+                <h2 class="consectetur_text">Acerca de Mi</h2>
+                <p class="dummy_text">Soy estudiante de la 
+                  Tecnicatura en Desarrollo de Software y soy de <strong> Salta Capital.</strong> <br> 
+                  Tengo un fuerte interés en el mundo del desarrollo backend. 
+                  La informática es mi pasión y mi motivación principal. <br>
+                  Siempre estoy comprometida en aprender y adquirir nuevas habilidades 
+                  para superarme constantemente. <br>
+                  Mis habilidades técnicas incluyen programación en 
+                  Java, C, Python, JavaScript, HTML, CSS, MySQL, MongoDB.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</main>
+{% endblock %}

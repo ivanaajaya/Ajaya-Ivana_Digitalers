@@ -6,9 +6,14 @@
 <main role="main">
   <div class="about_section layout_padding">
     <div class="container">
+      <h1 class="choose_taital"><span>Eliminar </span> <img src="{% static 'miapp/images/icon-1.png' %}"> <span style="color: #1f1f1f">
+        Servicios</span></h1>
       <form method="post">{% csrf_token %}
-        <p style="color:red;">Esta seguro que quiere eliminar el Servicio "{{ object }}"?</p>
-        <input type="submit" class="btn btn-primary btn-block" value="Confirmar">
+        <h2>Esta seguro que quiere eliminar el Servicio --> "{{ object }}"?</h2>
+        <div>
+          <a href="{% url 'servicios' %}" class="btn btn-sm btn-primary">Cancelar</a>
+          <input type="submit" class="btn btn-sm btn-danger" value="Confirmar">
+        </div>
       </form>
     </div>
   </div>

@@ -11,25 +11,34 @@
       <div class="container">
         <h1 class="choose_taital"><span>Lista de </span> <img src="{% static 'miapp/images/icon-1.png' %}"> <span style="color: #1f1f1f">
           Servicios</span></h1>
+          <div >
+            <form  method="get">
+              <input type="text" name="q" placeholder="Buscar servicios">
+              <button type="submit" >Buscar </button>
+            </form>
+          </div>
+          <br>
+          <hr>
         {% if user.is_authenticated and user.empleado %}
           <div>
             <h2>
-              <a style="color:green;" href="{% url 'nuevo-servicio' %}">Agregar un Nuevo Servicio</a>
+              <a class="btn btn-sm btn-primary"  href="{% url 'nuevo-servicio' %}">Agregar un Nuevo Servicio</a>
             </h2>
           </div>
           <br>
         {% endif %}
         {% if tiposervicio_list %}
             <div>
+              {% comment %} <div class="client_taital"> {% endcomment %}
             {% for servicio in tiposervicio_list %}
-                <div>
-                  <h2>{{ servicio.nombreServicio }}</h2>
+                <div >
+                  <h1 >{{ servicio.nombreServicio }}</h1>
                   <div>
                     <div style="display: flex;">
                       {% if servicio.imagen %}
-                        <img class=""  width="200" height="200" src="{{servicio.imagen.url}}" alt="{{servicio.imagen.url}}"/>
+                        <img class=""  width="300" height="300" src="{{servicio.imagen.url}}" alt="{{servicio.imagen.url}}"/>
                       {% else %}
-                        <img class="r"  width="200" height="200" src="{% static 'miapp/images/img-5.png' %}">
+                        <img class="r"  width="300" height="300" src="{% static 'miapp/images/img-5.png' %}">
                       {% endif  %}                         
                         <div><span>{{servicio.descripcion|safe}}</span></div>
                     </div>
@@ -37,21 +46,23 @@
                       <div>
                           <a href="{% url 'actualizar-servicio' servicio.id %}" class="btn btn-sm btn-primary">Editar</a>
                           <a href="{% url 'eliminar-servicio' servicio.id %}" class="btn btn-sm btn-danger">Eliminar</a>
-                          <p>Solo un cliente puede reservar un turno</p>
+                          <h3 style="color: gray;">Solo un cliente puede reservar un turno</h3>
                       </div>
                     {% endif %}
                     {% if user.is_authenticated and user.cliente %}
                       <div>
                         <h2>
-                          <a href="{% url 'nueva-reserva' servicio.id%}" class="btn btn-sm btn-primary">Reserva un Turno</a>
+                          <a href="{% url 'reservar-servicio' servicio.id %}" class="btn btn-sm btn-primary">Reserva un Turno</a>
+                          
                         </h2>
                       </div>
-                      <br>
+                      
                     {% endif %}
                   </div>           
                 </div>
-                <br>
-            {% endfor %}
+
+                <hr>
+              {% endfor %}
         </div>
         {% else %}
         <div>

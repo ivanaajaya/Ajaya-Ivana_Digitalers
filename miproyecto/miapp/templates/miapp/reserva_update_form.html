@@ -7,13 +7,17 @@
   <main role="main">
     <div class="about_section layout_padding">
       <div class="container">
-        <h2 class="choose_title">Editar Reserva:</h2>
-        <form method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <h1 class="choose_taital"><span>Editar </span> <img src="{% static 'miapp/images/icon-1.png' %}"> <span style="color: #1f1f1f">
+          Reserva</span></h1>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <div>
+              <br>
+              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </div>
         </form>
-
       </div>
     </div>
   </main>

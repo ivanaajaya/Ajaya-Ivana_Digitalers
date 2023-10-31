@@ -9,6 +9,7 @@ from ckeditor.widgets import CKEditorWidget
 from .models import Cliente, Empleado, TipoServicio, Reserva
 
 class RegistroForm(UserCreationForm):
+    """Formulario de registro de usuario con validación de palabra clave para empleados."""
     nombre = forms.CharField(max_length=100, label='Nombre', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}))
     apellido = forms.CharField(max_length=100, label='Apellido', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellido'}))
     correo = forms.EmailField(label='Correo electrónico', widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Correo electrónico'}))
@@ -32,6 +33,7 @@ class RegistroForm(UserCreationForm):
         return user
     
 class EmpleadoForm(forms.ModelForm):
+    """Formulario para agregar y editar empleados."""
     class Meta:
         model = Empleado
         fields = ['nombreEmpleado', 'apellidoEmpleado', 'correoEmpleado', 'telefonoEmpleado', 'direccionEmpleado', 'horarioTrabajo', 'estadoEmpleo', 'numeroEmpleado', 'fotoEmpleado']
@@ -48,6 +50,7 @@ class EmpleadoForm(forms.ModelForm):
         }
         
 class ClienteForm(forms.ModelForm):
+    """Formulario para agregar y editar clientes."""
     class Meta:
         model = Cliente
         fields = ['nombreCliente', 'apellidoCliente', 'correoCliente', 'telefonoCliente', 'direccionCliente', 'fotoCliente']
@@ -61,6 +64,7 @@ class ClienteForm(forms.ModelForm):
         }
         
 class UserEditForm(forms.ModelForm):
+    """Formulario para editar información de usuario."""
     class Meta:
         model = User
         fields = ['username', 'password']
@@ -70,6 +74,7 @@ class UserEditForm(forms.ModelForm):
         }
         
 class TipoServicioForm(forms.ModelForm):
+    """Formulario para agregar y editar tipos de servicio."""
     class Meta:
         model = TipoServicio
         fields = ['nombreServicio', 'descripcion', 'imagen', 'duracionEstimada', 'costoEstimado']
@@ -88,6 +93,7 @@ class TipoServicioForm(forms.ModelForm):
         }
         
 class ReservaUpdateForm(forms.ModelForm):
+    """Formulario para actualizar información de reservas."""
     class Meta:
         model = Reserva
         fields = ['empleado', 'fechaHora', 'direccionCliente', 'tipoServicio', 'estadoReserva']
@@ -115,4 +121,20 @@ class ReservaUpdateForm(forms.ModelForm):
     estadoReserva = forms.ChoiceField(
         choices=Reserva.ESTADO_RESERVA_CHOICES,
         widget=forms.Select(attrs={'class': 'form-control'}),
+    )
+
+class ReservaForm(forms.ModelForm):
+    """Formulario para crear y editar reservas de servicios."""
+    class Meta:
+        model = Reserva
+        fields = ['empleado', 'fechaHora', 'direccionCliente']
+        widgets = {
+            'fechaHora': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ejemplo: 2023-10-29 12:00'}),
+            'direccionCliente': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Dirección del Cliente'}),
+        }
+
+    empleado = forms.ModelChoiceField(
+        queryset=Empleado.objects.all(),
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        required=True  # siempre selecciona un empleado
     )
