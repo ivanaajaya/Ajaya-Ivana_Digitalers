@@ -72,6 +72,11 @@ Para inicializar el proyecto:
 ### Para Registrate como Cliente
 - No ingrese ninguna palabra solo vacio = ''
 
+-----
+
+## Enlace de los casos de prueba
+https://docs.google.com/spreadsheets/d/1zQ_93nWp-aAwW7iPtK5nX5l-kY8u8Jmkp1HcVb7yjQI/edit?usp=sharing
+
 ## Autor
 - Ivana Yamila Belén Ajaya
 
